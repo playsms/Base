@@ -58,7 +58,6 @@ $icon_config = array(
 $core_config['menutab'] = array(
 	'home' => _('Home') ,
 	'my_account' => _('My account') ,
-	'reports' => _('Reports') ,
 	'features' => _('Features') ,
 	'settings' => _('Settings') ,
 );
@@ -86,7 +85,8 @@ $menu_config[$menutab][] = array(
 // settings tab
 if (auth_isadmin()) {
 	
-	// admin settings
+	// admin's menus
+	
 	$menutab = $core_config['menutab']['settings'];
 
 	$menu_config[$menutab][] = array(
@@ -111,7 +111,8 @@ if (auth_isadmin()) {
 	);
 } else if ($user_config['status'] == 3) {
 	
-	// user menus
+	// user's menus
+	
 	$menutab = $core_config['menutab']['settings'];
 	
 	$menu_config[$menutab][] = array(
@@ -126,6 +127,7 @@ if (auth_isadmin()) {
 	);
 } else if ($user_config['status'] == 4) {
 
-	// subuser menus
+	// subuser's menus
+	
 	$menutab = $core_config['menutab']['settings'];
 }
