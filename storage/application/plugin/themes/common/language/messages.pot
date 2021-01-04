@@ -19,9 +19,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-msgid "Compose message"
-msgstr ""
-
 msgid "Credit"
 msgstr ""
 
@@ -109,12 +106,6 @@ msgstr ""
 msgid "Manage account"
 msgstr ""
 
-msgid "Manage gateway and SMSC"
-msgstr ""
-
-msgid "Manage sender ID"
-msgstr ""
-
 msgid "Manage site"
 msgstr ""
 
@@ -191,9 +182,6 @@ msgid "View"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
-
-msgid "Your credit"
 msgstr ""
 
 msgid "return"

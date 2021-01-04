@@ -214,9 +214,6 @@ msgstr ""
 msgid "No changes made"
 msgstr ""
 
-msgid "None"
-msgstr ""
-
 msgid "Parent"
 msgstr ""
 
