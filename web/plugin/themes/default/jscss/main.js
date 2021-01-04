@@ -1,12 +1,12 @@
 $(document).ready(function() {
-	$(".button").addClass("btn btn-primary");
+	$(".button").addClass("btn btn-outline-dark");
 	
 	$(".playsms-navbar").addClass("navbar-dark bg-primary");
 
-	$(".playsms-table-list").addClass("table table-striped table-hover table-condensed");
+	$(".playsms-table-list").addClass("table-sm table-striped table-hover table-condensed");
 	$(".playsms-table-list").tablesorter();
-	
-	$(".playsms-table").addClass("table table-hover table-condensed");
+		
+	$(".playsms-table").addClass("table-sm table-hover table-condensed");
 	
 	$(".playsms-tooltip").tooltip();
 	
@@ -29,5 +29,13 @@ $(document).ready(function() {
 
 	$("textarea").addClass("form-control playsms-input-sizer");
 	
-	$("select").addClass("form-control playsms-input-sizer");	
+	$("select").addClass("form-control playsms-input-sizer");
+	
+	var page_header_title = $(".page-header-title").text();
+	$(".this-page-header-title").text(page_header_title);
+	$(".page-header-title").remove();
+
+	var page_header_subtitle = $(".page-header-subtitle").text();
+	$(".this-page-header-subtitle").text(page_header_subtitle);
+	$(".page-header-subtitle").remove();
 });

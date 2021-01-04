@@ -78,15 +78,6 @@ switch (_OP_) {
 		$c_option_default_acl = array_flip(acl_getall());
 		$option_default_acl = _select('edit_default_acl', $c_option_default_acl, $main_config['default_acl']);
 		
-		// get gateway options
-		$main_gateway = $main_config['gateway_module'];
-		unset($smsc_list);
-		$list = gateway_getall_smsc();
-		foreach ($list as $smsc) {
-			$smsc_list[] = $smsc['name'];
-		}
-		$option_gateway_module = _options($smsc_list, $main_gateway);
-		
 		// get themes options
 		$main_themes = $main_config['themes_module'];
 		$option_themes_module = _options($core_config['plugins']['list']['themes'], $main_themes);

@@ -1,95 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>{{ $core_config['main']['web_title'] }}</title>
-	<meta name="author" content="http://antonraharja.com">
+<title>{{ $core_config['main']['web_title'] }}</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-	<!-- favicon -->
-	<link rel="apple-touch-icon" sizes="57x57" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="{{ HTTP_PATH_THEMES }}/common/images/favicon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/favicon-16x16.png">
-	<link rel="manifest" href="{{ HTTP_PATH_THEMES }}/common/images/favicon/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="{{ HTTP_PATH_THEMES }}/common/images/favicon/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/fontawesome-free/css/all.min.css" />
 
-	<!-- Font Awesome 5 -->
-	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/common/jscss/font-awesome/css/all.min.css" />
-
-	<!-- Bootstrap 4 Bootswatch -->
-	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/bootstrap/css/bootstrap.min.css" />
+	<!-- Bootstrap 4 -->
+	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/bootstrap/css/bootstrap.min.css" />
 
 	<!-- Bootstrap 4 datetimepicker -->
 	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/common/jscss/bootstrap4-datetimepicker/css/bootstrap-datetimepicker.css" />
 
 	<!-- Select2 -->
-	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/common/jscss/select2/select2.css" />
-	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/common/jscss/select2/select2-bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/select2/css/select2.min.css" />
+	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" />
+
+	<!-- AdminLTE 3 -->
+	<link rel="stylesheet" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/css/adminlte.min.css">
 
 	<!-- playSMS -->
 	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/common/jscss/common.css" />
 	<link rel="stylesheet" type="text/css" href="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/main.css" />
 </head>
-<body>
 
-<!-- JQuery 3.5.1 -->
-<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/jquery/jquery.min.js"></script>
+<if.valid>
+<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed">
+</if.valid>
+<if.logout>
+<body class="hold-transition sidebar-collapse layout-fixed layout-footer-fixed">
+</if.logout>
+
+<!-- jQuery -->
+<script src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/jquery/jquery.min.js"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
 
 <!-- JQuery Tablesorter 2.9.1 -->
 <script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/jquery-tablesorter/jquery.tablesorter.min.js"></script>
 
 <!-- Bootstrap 4 -->
-<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Moment 2.9.0 -->
-<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/moment/moment.min.js"></script>
+<!-- Moment -->
+<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/moment/moment.min.js"></script>
 
 <!-- Bootstrap 4 datetimepicker -->
 <script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/bootstrap4-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 
 <!-- Select2 -->
-<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/select2/select2.min.js"></script>
-<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/select2/select2_locale_{{ THEMES_LANG }}.js"></script>
+<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/select2/js/select2.full.min.js"></script>
+<script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/plugins/select2/js/i18n/{{ THEMES_LANG }}.js"></script>
+
+<!-- AdminLTE 3 -->
+<script src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/adminlte/js/adminlte.min.js"></script>
 
 <!-- playSMS -->
 <script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/common/jscss/common.js"></script>
 <script type="text/javascript" src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/jscss/main.js"></script>
 
-<div class="container">
-	<if.valid>
-		<div id="main-menu">
-			{{ THEMES_MENU_TREE }}
-		</div>
-		<div id="main-submenu">
-			{{ THEMES_SUBMENU }}
-		</div>
-	</if.valid>
-	<div id="main-content">
-		{{ CONTENT }}
-	</div>
-</div>
+<div class="wrapper">
 
-<if.valid>
-<footer id="main-footer">
-	<div class="container">
-		<p class="text-muted credit">{{ LAYOUT_FOOTER }}</p>
+	<if.valid>
+	<!-- Navbar -->
+	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+		<!-- Left navbar links -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="{{ HTTP_PATH_BASE }}" class="nav-link">{{ Home }}</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="https://github.com/playsms/base" class="nav-link">About Us</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="https://github.com/playsms/base" class="nav-link">Contact</a>
+			</li>
+		</ul>
+
+		<!-- Right navbar links -->
+		<ul class="navbar-nav ml-auto">
+			<!-- Navbar Search -->
+			<li class="nav-item d-none d-sm-inline-block">
+				<span class="nav-link">
+					{{ THEMES_SUBMENU }}
+				</span>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="{{ LOGOUT_URL }}" class="nav-link">{{ $icon_config['logout'] }}</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /.navbar -->
+
+	<!-- Main Sidebar Container -->
+	<aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<div class="sidebar">
+			<!-- Brand Logo -->
+			<a href="#" class="brand-link">
+				<img src="{{ HTTP_PATH_THEMES }}/{{ THEMES_MODULE }}/images/adminlte/AdminLTELogo.png"
+				alt="{{ $core_config['main']['web_title'] }}" class="brand-image img-circle elevation-3"
+				style="opacity: .8">
+				<span class="brand-text font-weight-light">{{ $core_config['main']['web_title'] }}</span>
+			</a>
+
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<!-- Sidebar Menu -->
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">					
+					{{ THEMES_MENU_TREE }}
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		<!-- /.sidebar -->
+		</div>
+		<!-- /.sidebar -->
+	</aside>
+	</if.valid>
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+	
+		<!-- Content header -->
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0">
+							<span class="this-page-header-title text-dark text-nowrap">Dashboard</span>
+							<small><small><span class="this-page-header-subtitle text-muted text-nowrap">Welcome</span></small></small>
+						</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6 ml-auto">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a href="{{ HTTP_PATH_BASE }}">{{ Home }}</a></li>
+							<li class="breadcrumb-item active"><span class="this-page-header-title">Welcome</span></li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</section>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-body">
+						<div class="main-content">
+							{{ CONTENT }}
+						</div>
+					</div>
+				</div>
+			</div><!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+
 	</div>
-</footer>
-</if.valid>
+	<!-- /.content-wrapper -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		{{ LAYOUT_FOOTER }}
+		<div class="float-right d-none d-sm-inline-block">
+			<b>Version</b> 1.4.4
+		</div>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+
+</div>
+<!-- ./wrapper -->
 
 <if.valid>
 <script type="text/javascript">
@@ -115,4 +213,5 @@
 </if.valid>
 
 </body>
+
 </html>

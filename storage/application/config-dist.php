@@ -38,7 +38,7 @@ error_reporting(0);
 $core_config['logstate']	= 3;
 
 // log file
-$core_config['logfile']		= 'playsms.log';
+$core_config['logfile']		= 'base.log';
 
 // WARNING: will log almost anything but passwords
 $core_config['logaudit']	= true;

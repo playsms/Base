@@ -99,9 +99,8 @@ switch (_OP_) {
 				<th width='15%'>" . _('Registered') . "</th>
 				" . $parent_column_title . "
 				<th width='15%'>" . _('Username') . "</th>
-				<th width='15%'>" . _('Name') . "</th>
+				<th width='20%'>" . _('Name') . "</th>
 				<th width='15%'>" . _('Mobile') . "</th>
-				<th width='10%'>" . _('Credit') . "</th>
 				<th width='14%'>" . _('ACL') . "</th>										
 				<th width='6%' nowrap>" . _('Action') . "</th>
 			</tr></thead>
@@ -165,7 +164,6 @@ switch (_OP_) {
 					<td>" . $banned_icon . "" . $list[$i]['username'] . " </td>
 					<td>" . $list[$i]['name'] . "</td>
 					<td>" . $list[$i]['mobile'] . "</td>
-					<td>" . rate_getusercredit($list[$i]['username']) . "</td>
 					<td>" . acl_getnamebyuid($list[$i]['uid']) . "</td>
 					<td nowrap>" . $action . "</td>
 				</tr>";

@@ -60,12 +60,8 @@ function common_hook_themes_submenu($content = '') {
 	$logged_in = ( $user_config['name'] ? $user_config['name'] : $user_config['username'] );
 	$tooltips_logged_in = _('Logged in as') . ' ' . $logged_in;
 	
-	$credit = core_display_credit(rate_getusercredit($user_config['username']));
-	$tooltips_credit = _('Your credit');
-	
 	$ret = '<div class="playsms-submenu">';
 	$ret .= '<span class="playsms-icon fas fa-user" alt="' . $tooltips_logged_in . '" title="' . $tooltips_logged_in . '"></span>' . $logged_in;
-	$ret .= $separator . '<span class="playsms-icon fas fa-credit-card" alt="' . $tooltips_credit . '" title="' . $tooltips_credit . '"></span><div id="submenu-credit-show">' . $credit . '</div>';
 	
 	if (auth_login_as_check()) {
 		$ret .= $separator . _a('index.php?app=main&inc=core_auth&route=logout', _('return'));
@@ -78,73 +74,74 @@ function common_hook_themes_submenu($content = '') {
 }
 
 function common_hook_themes_menu_tree($menu_config) {
-	global $core_config, $user_config, $icon_config;
-	
-	$main_menu = "";
-	foreach ($menu_config as $menu_title => $array_menu) {
-		foreach ($array_menu as $sub_menu) {
-			$sub_menu_url = $sub_menu[0];
-			$sub_menu_title = $sub_menu[1];
-			$sub_menu_index = (int) ($sub_menu[2] ? $sub_menu[2] : 10) + 100;
-			
-			// devider or valid entry
-			if (($sub_menu_url == '#') && ($sub_menu_title == '-')) {
-				$m[$sub_menu_index . '.' . $sub_menu_title] = "<div class='dropdown-divider'></div>";
-			} else if ($sub_menu_url == '#') {
-				$m[$sub_menu_index . '.' . $sub_menu_title] = "<div class='dropdown-item'>" . $sub_menu_title . "</div>";
-			} else if ($sub_menu_url && $sub_menu_title) {
-				if (acl_checkurl($sub_menu_url)) {
-					$m[$sub_menu_index . '.' . $sub_menu_title] = "<a class='dropdown-item' href='" . _u($sub_menu_url) . "'>" . $sub_menu_title . "</a>";
-				}
-			}
-		}
-		
+    global $core_config, $user_config, $icon_config;
+
+    $main_menu = "";
+    foreach ($menu_config as $menu_title => $array_menu) {
+        foreach ($array_menu as $sub_menu) {
+            $sub_menu_url = $sub_menu[0];
+            $sub_menu_title = $sub_menu[1];
+            $sub_menu_index = (int) ($sub_menu[2] ? $sub_menu[2] : 10) + 100;
+
+            // devider or valid entry
+            if (($sub_menu_url == '#') && ($sub_menu_title == '-')) {
+                $m[$sub_menu_index . '.' . $sub_menu_title] = "";
+            } else if ($sub_menu_url == '#') {
+                $m[$sub_menu_index . '.' . $sub_menu_title] = "";
+            } else if ($sub_menu_url && $sub_menu_title) {
+                if (acl_checkurl($sub_menu_url)) {
+                    $m[$sub_menu_index . '.' . $sub_menu_title] = "
+                        <li class='nav-item'>
+                            <a href='" . _u($sub_menu_url) . "' class='nav-link'><i class='far fa-circle nav-icon'></i><p>" . $sub_menu_title . "</p></a>
+                        </li>";
+                }
+            }
+        }
+
 		$found = false;
-		if (count($m)) {
-			$main_menu_tree = "
-				<div class='nav-item dropdown'>
-					<a href='#' data-toggle='dropdown' id='" . core_sanitize_alphanumeric($menu_title) . "' class='nav-item nav-link dropdown-toggle'>" . $menu_title . "</a>
-					<div class='dropdown-menu' aria-labelledby='" . core_sanitize_alphanumeric($menu_title) . "'>";
-			
-			ksort($m);
-			foreach ($m as $mm) {
-				if ($mm) {
-					$main_menu_tree .= $mm;
-					$found = true;
-				}
-			}
-			unset($m);
-			
-			$main_menu_tree .= "</div>";
-			$main_menu_tree .= "</div>";
-		}
-		
-		$main_menu .= $main_menu_tree;
+        if (count($m)) {
+            $menu_tree = "
+            	<li class='nav-item has-treeview'>
+        	        <a href='#' class='nav-link'>
+            	        <i class='nav-icon far fa-folder-open'></i>
+                	    <p>" . $menu_title . "<i class='right fas fa-angle-left'></i></p>
+	                </a>
+    	            <ul class='nav nav-treeview bg-dark' style='background-color: #c0c0c0'>";
+
+            ksort($m);
+            foreach ($m as $mm) {
+            	if ($menu_tree_item = trim($mm)) {
+	                $menu_tree .= $menu_tree_item;
+    	            $found = true;
+    	        }
+            }
+            unset($m);
+
+            $menu_tree .= "
+	            	</ul>
+            	</li>";
+        }
+        
+        if ($found) {
+        	$main_menu .= $menu_tree;
+        }
+    }
+    
+    if (auth_isvalid()) {
+    	$main_menu .= "
+			<li class='nav-item'>
+       			<a href='" . _u('index.php?app=main&inc=core_auth&route=logout') . "' class='nav-link'><i class='nav-icon fas fa-sign-out-alt'></i><p>"  . _('Logout') . "</p><a/>
+        	</li>";
+    } else {
+    	$main_menu .= "
+			<li class='nav-item'>
+       			<a href='#' class='nav-link'><i class='nav-icon fas fa-sign-in-alt'></i><p>"  . _('Login') . "</p><a/>
+        	</li>";
 	}
 	
-	$content = "
-		<nav class='playsms-navbar navbar navbar-expand-md fixed-top' role='navigation'>
-				<div class='container'>
-					<div class='navbar-header'>
-						<button type='button' class='navbar-toggler' data-toggle='collapse' data-target='#navbar-collapse'>
-							<span class='navbar-toggler-icon'></span>
-						</button>
-						<a href='" . _u($core_config['main']['main_website_url']) . "' class='navbar-brand'>" . $core_config['main']['main_website_name'] . "</a>
-					</div>
-					<div id='navbar-collapse' class='navbar-collapse collapse justify-content-between'>
-						<div class='navbar-nav'>
-							<a class='nav-item nav-link' href='" . _u(_HTTP_PATH_BASE_) . "'>" . _('Home') . "</a>
-							" . $main_menu . "
-						</div>
-						<div class='navbar-nav'>
-							<a class='nav-item nav-link' href='" . _u('index.php?app=main&inc=core_auth&route=logout') . "'>" . $icon_config['logout'] . "</a>
-						</div>
-					</div>
-				</div>
-		</nav>
-	";
-	
-	return $content;
+    $content = $main_menu;
+
+    return $content;
 }
 
 function common_hook_themes_navbar($num, $nav, $max_nav, $url, $page) {

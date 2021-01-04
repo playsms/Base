@@ -15,22 +15,6 @@
 			<td>{{ option_acl }} {{ HINT_ACL }}</td>
 		</tr>
 		<tr>
-			<td>{{ Default sender ID }}</td>
-			<td><select name='up_sender'>{{ option_sender_id }}</select></td>
-		</tr>
-		<tr>
-			<td>{{ Default message footer }}</td>
-			<td><input type=text maxlength=30 name=up_footer value="{{ footer }}"> {{ HINT_MAX_ALPHANUMERIC }}</td>
-		</tr>
-		<tr>
-			<td>{{ Credit }}</td>
-			<td><input type=text maxlength=14 value='{{ credit }}' readonly> {{ HINT_MANAGE_CREDIT }}</td>
-		</tr>
-		<tr>
-			<td>{{ Enable credit unicode SMS as normal SMS }}</td>
-			<td>{{ option_enable_credit_unicode }}</td>
-		</tr>
-		<tr>
 			<td>{{ Webservices username }}</td>
 			<td>{{ c_username }}</td>
 		</tr>
@@ -57,26 +41,6 @@
 		<tr>
 			<td>{{ Timezone }}</td>
 			<td><input type=text size=5 maxlength=5 name=up_datetime_timezone value='{{ datetime_timezone }}'> {{ HINT_TIMEZONE }}</td>
-		</tr>
-		<tr>
-			<td>{{ Forward message to inbox }}</td>
-			<td><select name='up_fwd_to_inbox'>{{ option_fwd_to_inbox }}</select></td>
-		</tr>
-		<tr>
-			<td>{{ Forward message to email }}</td>
-			<td><select name='up_fwd_to_email'>{{ option_fwd_to_email }}</select></td>
-		</tr>
-		<tr>
-			<td>{{ Forward message to mobile }}</td>
-			<td><select name='up_fwd_to_mobile'>{{ option_fwd_to_mobile }}</select></td>
-		</tr>
-		<tr>
-			<td>{{ Local number length }}</td>
-			<td><input type=text size=5 maxlength=5 name='up_local_length' value='{{ local_length }}'> {{ HINT_LOCAL_LENGTH }}</td>
-		</tr>
-		<tr>
-			<td>{{ Prefix or country code }}</td>
-			<td><input type=text size=5 maxlength=5 name='up_replace_zero' value='{{ replace_zero }}'> {{ HINT_REPLACE_ZERO }}</td>
 		</tr>
 	</tbody>
 </table>

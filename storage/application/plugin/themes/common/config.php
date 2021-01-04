@@ -65,13 +65,7 @@ $core_config['menutab'] = array(
 
 // my account tab
 $menutab = $core_config['menutab']['my_account'];
-$menu_config[$menutab] = array(
-	array(
-		'index.php?app=main&inc=core_sendsms&op=sendsms',
-		_('Compose message') ,
-		1
-	) ,
-);
+
 // divider
 $menu_config[$menutab][] = array(
 	'#',
@@ -111,18 +105,8 @@ if (auth_isadmin()) {
 		3
 	);
 	$menu_config[$menutab][] = array(
-		'index.php?app=main&inc=core_sender_id&op=sender_id_list',
-		_('Manage sender ID') ,
-		3
-	);
-	$menu_config[$menutab][] = array(
 		'index.php?app=main&inc=core_main_config&op=main_config',
 		_('Main configuration') ,
-		3
-	);
-	$menu_config[$menutab][] = array(
-		'index.php?app=main&inc=core_gateway&op=gateway_list',
-		_('Manage gateway and SMSC') ,
 		3
 	);
 } else if ($user_config['status'] == 3) {
@@ -136,11 +120,6 @@ if (auth_isadmin()) {
 		3
 	);
 	$menu_config[$menutab][] = array(
-		'index.php?app=main&inc=core_sender_id&op=sender_id_list',
-		_('Manage sender ID') ,
-		3
-	);
-	$menu_config[$menutab][] = array(
 		'index.php?app=main&inc=core_site&op=site_config',
 		_('Manage site') ,
 		3
@@ -149,11 +128,4 @@ if (auth_isadmin()) {
 
 	// subuser menus
 	$menutab = $core_config['menutab']['settings'];
-	
-	$menu_config[$menutab][] = array(
-		'index.php?app=main&inc=core_sender_id&op=sender_id_list',
-		_('Manage sender ID') ,
-		3
-	);
-	
 }

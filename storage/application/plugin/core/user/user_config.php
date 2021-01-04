@@ -64,7 +64,6 @@ switch (_OP_) {
 			$local_length = $c_user[0]['local_length'];
 			$replace_zero = $c_user[0]['replace_zero'];
 			$acl_id = (int) $c_user[0]['acl_id'];
-			$credit = rate_getusercredit($c_username);
 		} else {
 			$_SESSION['dialog']['info'][] = _('User does not exist') . ' (' . _('username') . ': ' . $uname . ')';
 			header("Location: " . _u('index.php?app=main&inc=core_user&route=user_mgmnt&op=user_list&view=' . $view));
@@ -142,17 +141,6 @@ switch (_OP_) {
 				$option_language_module .= "<option value=\"" . $val . "\" $selected>" . $key . "</option>";
 				$selected = "";
 			}
-		}
-		
-		// get sender ID
-		$c_sms_from = sender_id_default_get($user_edited['uid']);
-		$option_sender_id = "<option value=\"\">" . _('None') . "</option>";
-		foreach (sender_id_getall($user_edited['username']) as $sender_id) {
-			$selected = '';
-			if (strtoupper($c_sms_from) == strtoupper($sender_id)) {
-				$selected = 'selected';
-			}
-			$option_sender_id .= "<option value=\"" . $sender_id . "\" title=\"" . $sender_id . "\" " . $selected . ">" . $sender_id . "</option>";
 		}
 		
 		// admin or users
@@ -261,7 +249,6 @@ switch (_OP_) {
 				'option_acl' => $option_acl,
 				'option_sender_id' => $option_sender_id,
 				'c_username' => $c_username,
-				'effective_sender_id' => sendsms_get_sender($c_username),
 				'sender' => $sender,
 				'footer' => $footer,
 				'token' => $token,

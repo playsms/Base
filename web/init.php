@@ -149,7 +149,7 @@ define('_DB_NAME_', $core_config['db']['name']);
 define('_DB_DSN_', $core_config['db']['dsn']);
 define('_DB_OPT_', $core_config['db']['options']);
 
-$core_config['db']['pref'] = 'playsms';
+$core_config['db']['pref'] = 'base';
 define('_DB_PREF_', $core_config['db']['pref']);
 
 // SMTP config defines
